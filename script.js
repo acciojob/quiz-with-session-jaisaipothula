@@ -37,7 +37,8 @@ function loadQuiz() {
             <h3>${q.question}</h3>
             ${q.options.map((option, i) => `
                 <label>
-                    <input type="radio" name="question${index}" value="${option}" ${savedProgress[`question${index}`] === option ? 'checked' : ''}>
+                    <input type="radio" name="question${index}" value="${option}" 
+                    ${savedProgress[`question${index}`] === option ? 'checked' : ''}>
                     ${option}
                 </label>
             `).join('')}
