@@ -78,9 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('score', score);
 
         // Display result
-        const resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = `Your score is ${score} out of ${questions.length}.`;
-        resultDiv.style.display = 'block';
+        const scoreDiv = document.getElementById('score');
+        scoreDiv.innerHTML = `Your score is ${score} out of ${questions.length}.`;
+        scoreDiv.style.display = 'block';
         
         // Clear session storage after submission
         sessionStorage.removeItem('progress');
