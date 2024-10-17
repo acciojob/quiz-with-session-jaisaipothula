@@ -1,33 +1,33 @@
 const questions = [
     {
         question: "What is the capital of France?",
-        options: ["Berlin", "Madrid", "Paris", "Lisbon"],
+        choices: ["Berlin", "Madrid", "Paris", "Lisbon"],
         answer: 2 // Index of correct answer
     },
     {
         question: "Which planet is known as the Red Planet?",
-        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        choices: ["Earth", "Mars", "Jupiter", "Saturn"],
         answer: 1
     },
     {
         question: "What is the largest ocean on Earth?",
-        options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+        choices: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
         answer: 3
     },
     {
         question: "Who wrote 'Hamlet'?",
-        options: ["Charles Dickens", "Mark Twain", "William Shakespeare", "Leo Tolstoy"],
+        choices: ["Charles Dickens", "Mark Twain", "William Shakespeare", "Leo Tolstoy"],
         answer: 2
     },
     {
         question: "What is the smallest prime number?",
-        options: ["0", "1", "2", "3"],
+        choices: ["0", "1", "2", "3"],
         answer: 2
     }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    const quizContainer = document.getElementById('quizContainer');
+    const questionsContainer = document.getElementById('questions');
     
     // Load saved progress from session storage
     const savedProgress = JSON.parse(sessionStorage.getItem('progress')) || {};
@@ -36,21 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const questionDiv = document.createElement('div');
         questionDiv.innerHTML = `<h3>${q.question}</h3>`;
         
-        q.options.forEach((option, i) => {
+        q.choices.forEach((choice, i) => {
             const checked = savedProgress[index] === i ? 'checked' : '';
             questionDiv.innerHTML += `
                 <label>
                     <input type="radio" name="question${index}" value="${i}" ${checked}>
-                    ${option}
+                    ${choice}
                 </label>
             `;
         });
 
-        quizContainer.appendChild(questionDiv);
+        questionsContainer.appendChild(questionDiv);
     });
 
     // Save progress on change
-    quizContainer.addEventListener('change', () => {
+    questionsContainer.addEventListener('change', () => {
         const selectedOptions = {};
         
         questions.forEach((_, index) => {
@@ -86,6 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.removeItem('progress');
         
         // Optionally clear the form or reset it
-        quizContainer.innerHTML = ''; // Clear quiz after submission if desired
+        questionsContainer.innerHTML = ''; // Clear quiz after submission if desired
     });
 });
