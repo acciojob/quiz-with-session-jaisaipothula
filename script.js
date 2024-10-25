@@ -2,7 +2,7 @@ const questions = [
     {
         question: "What is the capital of France?",
         choices: ["Berlin", "Madrid", "Paris", "Lisbon"],
-        answer: 2 // Index of correct answer
+        answer: 2 
     },
     {
         question: "Which planet is known as the Red Planet?",
@@ -25,8 +25,6 @@ const questions = [
         answer: 2
     }
 ];
-
-// Load saved progress from session storage
 function loadProgress() {
     const savedProgress = JSON.parse(sessionStorage.getItem('progress')) || {};
     
@@ -37,8 +35,6 @@ function loadProgress() {
         }
     });
 }
-
-// Save progress to session storage
 function saveProgress() {
     const progress = {};
     
@@ -51,8 +47,6 @@ function saveProgress() {
 
     sessionStorage.setItem('progress', JSON.stringify(progress));
 }
-
-// Render questions in the quiz container
 function renderQuestions() {
     const quizContainer = document.getElementById('quiz-container');
     
@@ -72,8 +66,6 @@ function renderQuestions() {
         quizContainer.appendChild(questionDiv);
     });
 }
-
-// Calculate score and display it
 function calculateScore() {
     let score = 0;
 
@@ -84,27 +76,15 @@ function calculateScore() {
             score++;
         }
     });
-
-    // Store score in local storage
     localStorage.setItem('score', score);
-    
-    // Display result
     const scoreDiv = document.getElementById('score');
     scoreDiv.innerHTML = `Your score is ${score} out of ${questions.length}.`;
     scoreDiv.style.display = 'block';
 }
-
-// Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     renderQuestions();
-    
-    // Load saved progress from session storage on page load
     loadProgress();
-
-    // Save progress on change of selection
     document.getElementById('quiz-container').addEventListener('change', saveProgress);
-
-    // Handle submit button click
     document.getElementById('submit-btn').addEventListener('click', calculateScore);
 });
 
