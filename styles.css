@@ -1,16 +1,22 @@
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-h1 {
-    margin-bottom: 20px;
 }
 
 #quiz-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.question {
     margin-bottom: 20px;
 }
 
-label {
+.option {
     display: block;
+    margin: 5px 0;
 }
